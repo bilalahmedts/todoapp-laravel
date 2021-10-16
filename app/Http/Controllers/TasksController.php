@@ -68,7 +68,8 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        /* return view('tasks.index'); */
+       /*  $tasks = Task::find($id)->first();
+        return view('tasks.index')->with('id',$tasks); */
     }
 
     /**
@@ -80,12 +81,14 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tasks = Task::where('id',$id)
+
+        $tasks = Task::where('taskId',$id)
                 ->update([
                     'taskName'=>$request->input('taskName')
         ]);
+        dd($tasks);
         
-        return redirect('/tasks');
+        /* return redirect('/tasks'); */
     }
 
     /**

@@ -19,7 +19,7 @@
                         <div class="modal-body">
                             <div class="card ">
                                 <div class="card-body">
-                                    <form method="POST" action="/tasks">
+                                    <form method="POST" action="">
                                         @csrf
                                         <div class="form-group">
                                             <label>Enter Task</label>
@@ -57,19 +57,19 @@
                          @foreach ($tasks as $task)
                             <tr>
                                 <td class="text-center">{{ $i }}</td>
-                                <td style="display: none;">{{ $task->id }}</td>
+                                <td style="display: none;">{{ $task->taskId }}</td>
                                 <td class="text-center">{{ $task->taskName }}</td>
                                 <td>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <form method="POST">
-                                                <input type="hidden" name="id" value="@php $task->id @endphp">
+                                                <input type="hidden" name="taskId" value="{{ $task->taskId }}">
                                                 <button class="btn btn-primary" type="submit" name="deleteTask">Delete</button>
                                             </form>
                                         </div>
                                         <div class="col-md-3">
                                             <form method="POST">
-                                                <input type="hidden" name="id" value="@php $task->id @endphp">
+                                                <input type="hidden" name="taskId" value="{{ $task->taskId }}">
                                                 <button class="btn btn-primary editTaskButton" type="button" name="editTask" data-toggle="modal" data-target="#editTask">Edit</button>
                                             </form>
                                             <div class="modal fade" id="editTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -84,10 +84,10 @@
                                                         <div class="modal-body">
                                                             <div class="card ">
                                                                 <div class="card-body">
-                                                                    <form method="POST" action="tasks/{{ $task->id }}">
+                                                                    <form method="POST" action="tasks/{{ $task->taskId }}">
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <input type="hidden" name="id" id="id">
+                                                                        <input type="hidden" name="taskId" id="taskId">
                                                                         <div class="form-group">
                                                                             <label>Enter Task</label>
                                                                             <input type="text" class="form-control" id="taskName" name="taskName">
