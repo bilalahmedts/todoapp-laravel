@@ -84,7 +84,7 @@
                                                         <div class="modal-body">
                                                             <div class="card ">
                                                                 <div class="card-body">
-                                                                    <form method="POST" action="tasks/{{ $task->taskId }}">
+                                                                    <form method="POST" action="/tasks/{{ $task->taskId }}">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <input type="hidden" name="taskId" id="taskId">
