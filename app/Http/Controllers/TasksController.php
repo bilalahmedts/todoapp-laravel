@@ -68,8 +68,8 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        $tasks = Task::find($id)->first();
-        return view('tasks')->with('id', $tasks);
+       /*  $tasks = Task::find($id)->first();
+        return view('tasks')->with('taskId', $tasks); */
     }
 
     /**
@@ -106,6 +106,7 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tasks = Task::where('taskId',$id)->delete();
+        return redirect('/tasks');
     }
 }

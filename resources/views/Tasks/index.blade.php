@@ -62,7 +62,9 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <form method="POST">
+                                            <form method="POST" action="/tasks/{{ $task->taskId }}">
+                                                @method('DELETE')
+                                                @csrf
                                                 <input type="hidden" name="taskId" value="{{ $task->taskId }}">
                                                 <button class="btn btn-primary" type="submit" name="deleteTask">Delete</button>
                                             </form>
@@ -70,6 +72,7 @@
                                         <div class="col-md-3">
                                             <form method="POST">
                                                 <input type="hidden" name="taskId" value="{{ $task->taskId }}">
+                                                
                                                 <button class="btn btn-primary editTaskButton" type="button" name="editTask" data-toggle="modal" data-target="#editTask">Edit</button>
                                             </form>
                                             <div class="modal fade" id="editTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
